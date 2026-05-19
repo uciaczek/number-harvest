@@ -8,7 +8,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "dinumbers": {
+    "number-harvest": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -61,10 +61,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "dinumbers:build:production"
+              "buildTarget": "number-harvest:build:production"
             },
             "development": {
-              "buildTarget": "dinumbers:build:development"
+              "buildTarget": "number-harvest:build:development"
             }
           },
           "defaultConfiguration": "development"

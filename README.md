@@ -1,6 +1,6 @@
-# Dinumbers
+# number harvest
 
-Dinumbers is a small Angular quiz app for preschool number-symbol practice. Each round shows zero to nine colorful vegetables and asks the player to choose the matching digit.
+number harvest is a small Angular quiz app for preschool number-symbol practice. Each round shows zero to nine colorful vegetables and asks the player to choose the matching digit.
 
 ## Game Rules
 
