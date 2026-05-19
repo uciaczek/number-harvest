@@ -19,7 +19,31 @@
         <p class="result__label">Game over</p>
         <p class="result__score">{{ score() }}</p>
         <p class="result__caption">correct answers</p>
-        <button class="play-again" type="button" (click)="restart()">Play again</button>
+        <button class="play-again" type="button" aria-label="Play again" (click)="restart()">
+          <svg
+            class="play-again__icon"
+            aria-hidden="true"
+            focusable="false"
+            viewBox="0 0 64 64"
+          >
+            <path
+              d="M49 22a20 20 0 1 0 2.4 16.7"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="7"
+            />
+            <path
+              d="M49 11v14H35"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="7"
+            />
+          </svg>
+        </button>
       </section>
     } @else {
       <app-shape-field

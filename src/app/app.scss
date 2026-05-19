@@ -144,16 +144,20 @@ dd {
   appearance: none;
   background: #ffffff;
   border: 3px solid var(--ink);
-  border-radius: 0.5rem;
+  border-radius: 999rem;
   box-shadow: 0 0.45rem 0 var(--ink);
   color: var(--ink);
   cursor: pointer;
-  font-family: inherit;
-  font-size: 1.25rem;
-  font-weight: 900;
-  min-block-size: 4rem;
-  padding-inline: 1.8rem;
+  display: grid;
+  block-size: 5rem;
+  inline-size: 5rem;
+  padding: 0;
+  place-items: center;
   touch-action: manipulation;
+}
+
+.play-again__icon {
+  inline-size: 2.9rem;
 }
 
 .play-again:active {
