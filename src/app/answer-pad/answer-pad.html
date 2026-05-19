@@ -1,0 +1,20 @@
+<section
+  class="answer-pad"
+  [class.answer-pad--disabled]="disabled()"
+  [attr.aria-disabled]="disabled()"
+  aria-label="Choose the matching number"
+>
+  @for (answer of answers(); track answer) {
+    <button
+      class="answer-button"
+      [class.answer-button--wrong]="lastWrongAnswer() === answer"
+      type="button"
+      [disabled]="disabled()"
+      [attr.aria-label]="'Choose ' + answer"
+      (touchend)="selectAnswerFromTouch($event, answer)"
+      (click)="selectAnswer(answer)"
+    >
+      {{ answer }}
+    </button>
+  }
+</section>

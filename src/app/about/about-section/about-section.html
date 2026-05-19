@@ -1,0 +1,28 @@
+<button
+  class="about-button"
+  type="button"
+  [attr.aria-expanded]="open()"
+  aria-controls="about-openmoji"
+  (click)="toggled.emit()"
+>
+  About
+</button>
+
+@if (open()) {
+  <section
+    id="about-openmoji"
+    class="about-panel"
+    aria-label="About the vegetable graphics"
+    aria-live="polite"
+  >
+    <button
+      class="about-panel__close"
+      type="button"
+      aria-label="Close about"
+      (click)="closed.emit()"
+    >
+      Close
+    </button>
+    <app-about-content />
+  </section>
+}

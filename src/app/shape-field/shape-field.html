@@ -1,0 +1,44 @@
+<section
+  class="shape-field"
+  [class.shape-field--harvesting]="phase() === 'harvesting'"
+  [class.shape-field--planting]="phase() === 'planting'"
+  aria-label="Count the vegetables shown"
+  [style.--shape-columns]="columns()"
+  [style.--shape-rows]="rows()"
+>
+  <div class="vegetable-layer">
+    @if (vegetables().length === 0) {
+      <div class="zero-space" aria-hidden="true"></div>
+    } @else {
+      @for (vegetable of vegetables(); track vegetable.id) {
+        <img
+          class="vegetable"
+          [alt]="vegetable.alt"
+          [src]="vegetable.src"
+          [style.--vegetable-rotation]="vegetable.rotation"
+          [style.--vegetable-scale]="vegetable.scale"
+        />
+      }
+    }
+  </div>
+
+  @if (phase() === 'harvesting') {
+    <img
+      alt=""
+      aria-hidden="true"
+      class="field-vehicle field-vehicle--harvester"
+      src="/images/harvester.svg"
+      (animationend)="transitionDone.emit()"
+    />
+  }
+
+  @if (phase() === 'planting') {
+    <img
+      alt=""
+      aria-hidden="true"
+      class="field-vehicle field-vehicle--tractor"
+      src="/images/tractor.svg"
+      (animationend)="transitionDone.emit()"
+    />
+  }
+</section>

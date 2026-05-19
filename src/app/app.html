@@ -1,0 +1,47 @@
+<main class="quiz-app">
+  <section class="quiz-shell" aria-labelledby="quiz-title">
+    <header class="quiz-header">
+      <p class="quiz-kicker">Number garden</p>
+      <h1 id="quiz-title">How many?</h1>
+
+      <dl class="status-strip" aria-label="Game status">
+        @for (item of statusItems(); track item.label) {
+          <div class="status-strip__item">
+            <dt>{{ item.label }}</dt>
+            <dd>{{ item.value }}</dd>
+          </div>
+        }
+      </dl>
+    </header>
+
+    @if (gameOver()) {
+      <section class="result" aria-live="assertive">
+        <p class="result__label">Game over</p>
+        <p class="result__score">{{ score() }}</p>
+        <p class="result__caption">correct answers</p>
+        <button class="play-again" type="button" (click)="restart()">Play again</button>
+      </section>
+    } @else {
+      <app-shape-field
+        [fieldSize]="shapeFieldSize"
+        [phase]="fieldPhase()"
+        [vegetables]="vegetables()"
+        (transitionDone)="fieldTransitionDone()"
+      />
+
+      <p class="feedback" aria-live="polite">{{ feedbackMessage() }}</p>
+
+      <app-answer-pad
+        [buttonCount]="choicesCount()"
+        [disabled]="answerPadDisabled()"
+        [lastWrongAnswer]="lastWrongAnswer()"
+        [maxNumber]="maxAnswerNumber"
+        [questionId]="question().id"
+        [target]="question().target"
+        (answerSelected)="chooseAnswer($event)"
+      />
+    }
+  </section>
+
+  <app-about-section [open]="aboutOpen()" (closed)="closeAbout()" (toggled)="toggleAbout()" />
+</main>

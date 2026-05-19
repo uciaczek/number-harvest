@@ -1,0 +1,52 @@
+:host {
+  display: block;
+}
+
+.answer-pad {
+  display: grid;
+  gap: 0.7rem;
+  grid-template-columns: repeat(auto-fit, minmax(4.55rem, 1fr));
+}
+
+.answer-pad--disabled {
+  pointer-events: none;
+}
+
+.answer-button {
+  appearance: none;
+  background: #ffffff;
+  block-size: 4.6rem;
+  border: 3px solid var(--ink);
+  border-radius: 0.5rem;
+  box-shadow: 0 0.45rem 0 var(--ink);
+  color: var(--ink);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 2.1rem;
+  font-weight: 900;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.answer-button:disabled {
+  color: var(--muted);
+  cursor: wait;
+  opacity: 0.72;
+}
+
+.answer-button:active {
+  box-shadow: 0 0.15rem 0 var(--ink);
+  transform: translateY(0.3rem);
+}
+
+.answer-button:focus-visible {
+  outline: 0.25rem solid var(--blue);
+  outline-offset: 0.2rem;
+}
+
+.answer-button--wrong {
+  background: #ffe0e8;
+  border-color: var(--red);
+  color: #9a1736;
+}

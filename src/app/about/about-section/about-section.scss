@@ -1,0 +1,66 @@
+:host {
+  display: contents;
+}
+
+.about-button {
+  appearance: none;
+  background: var(--ink);
+  border: 0;
+  border-radius: 999px;
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  box-shadow: 0 0.35rem 0 rgba(23, 32, 42, 0.24);
+  color: #ffffff;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 900;
+  left: 50%;
+  min-block-size: 2.75rem;
+  padding-inline: 1.35rem;
+  position: fixed;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+.about-button:active {
+  box-shadow: 0 0.12rem 0 rgba(23, 32, 42, 0.24);
+  transform: translate(-50%, 0.23rem);
+}
+
+.about-button:focus-visible,
+.about-panel__close:focus-visible {
+  outline: 0.25rem solid var(--blue);
+  outline-offset: 0.2rem;
+}
+
+.about-panel {
+  background: #ffffff;
+  border: 3px solid var(--ink);
+  border-radius: 0.5rem;
+  bottom: calc(max(1rem, env(safe-area-inset-bottom)) + 3.35rem);
+  box-shadow: 0 0.45rem 0 var(--ink);
+  box-sizing: border-box;
+  display: grid;
+  gap: 0.85rem;
+  inline-size: min(calc(100% - 2rem), 25rem);
+  left: 50%;
+  padding: 1rem;
+  position: fixed;
+  transform: translateX(-50%);
+  z-index: 4;
+}
+
+.about-panel__close {
+  appearance: none;
+  background: #ffffff;
+  border: 2px solid var(--ink);
+  border-radius: 0.45rem;
+  color: var(--ink);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 900;
+  justify-self: start;
+  min-block-size: 2.25rem;
+  padding-inline: 0.85rem;
+}

@@ -1,0 +1,138 @@
+:host {
+  display: block;
+}
+
+.shape-field {
+  --shape-columns: 3;
+  --shape-rows: 3;
+  --field-transition-duration: 2350ms;
+
+  align-items: center;
+  aspect-ratio: 1;
+  background:
+    linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px), #ffffff;
+  background-size: calc(100% / var(--shape-columns)) calc(100% / var(--shape-rows));
+  border: 3px solid #9cc7b2;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.8rem 0 #cbe7d8;
+  box-sizing: border-box;
+  inline-size: min(100%, 22rem);
+  margin-inline: auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.vegetable-layer {
+  align-items: center;
+  block-size: 100%;
+  box-sizing: border-box;
+  display: grid;
+  gap: 0.65rem;
+  grid-template-columns: repeat(var(--shape-columns), minmax(0, 1fr));
+  grid-template-rows: repeat(var(--shape-rows), minmax(0, 1fr));
+  inline-size: 100%;
+  justify-items: center;
+  padding: 1rem;
+}
+
+.shape-field--harvesting .vegetable-layer {
+  animation: harvest-vegetables var(--field-transition-duration) linear;
+}
+
+.shape-field--planting .vegetable-layer {
+  animation: plant-vegetables var(--field-transition-duration) linear;
+}
+
+.vegetable {
+  --vegetable-rotation: 0deg;
+  --vegetable-scale: 1;
+
+  align-self: center;
+  block-size: min(4.25rem, 100%);
+  display: block;
+  filter: drop-shadow(0 0.45rem 0 rgba(23, 32, 42, 0.16));
+  inline-size: min(4.25rem, 100%);
+  object-fit: contain;
+  transform: rotate(var(--vegetable-rotation)) scale(var(--vegetable-scale));
+}
+
+.zero-space {
+  align-self: stretch;
+  background:
+    repeating-linear-gradient(45deg, transparent 0 0.7rem, rgba(23, 32, 42, 0.05) 0.7rem 1.4rem),
+    rgba(255, 255, 255, 0.75);
+  border: 0.3rem dashed #b6c8bd;
+  border-radius: 0.5rem;
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  justify-self: stretch;
+}
+
+.field-vehicle {
+  block-size: 100%;
+  inline-size: auto;
+  inset-block-start: 0;
+  max-inline-size: none;
+  pointer-events: none;
+  position: absolute;
+  z-index: 2;
+}
+
+.field-vehicle--harvester {
+  animation: harvester-sweep var(--field-transition-duration) linear forwards;
+  inset-inline-start: -110%;
+  transform: rotateY(180deg);
+}
+
+.field-vehicle--tractor {
+  animation: tractor-sweep var(--field-transition-duration) linear forwards;
+  inset-inline-start: 100%;
+}
+
+@keyframes harvest-vegetables {
+  from {
+    clip-path: inset(0 0 0 0);
+  }
+
+  to {
+    clip-path: inset(0 0 0 100%);
+  }
+}
+
+@keyframes plant-vegetables {
+  0%,
+  54% {
+    clip-path: inset(0 0 0 100%);
+  }
+
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes harvester-sweep {
+  from {
+    inset-inline-start: -220%;
+  }
+
+  to {
+    inset-inline-start: 110%;
+  }
+}
+
+@keyframes tractor-sweep {
+  from {
+    inset-inline-start: 100%;
+  }
+
+  to {
+    inset-inline-start: -130%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shape-field {
+    --field-transition-duration: 1ms;
+  }
+}
