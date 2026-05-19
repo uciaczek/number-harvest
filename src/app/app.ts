@@ -214,7 +214,7 @@ export class App {
 
     return {
       alt: asset.alt,
-      src: `/openmoji/vegetables/${asset.fileName}`,
+      src: `openmoji/vegetables/${asset.fileName}`,
     };
   }
 }
